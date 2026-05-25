@@ -66,3 +66,17 @@ class Player():
             card = d.pop_card()
             self._hand.append(card)
 
+    # this method acts like an AI for the croupier to play against player
+    def play(self, d:Deck):
+        # if the hand value is less than 16, 100% the AI would hit
+        while(self.hand_value < 16):
+            self.hit(d)
+            print(f'{self._name} hits -> total value: {self.hand_value}')
+
+        # if the hand value is exactly 16, theres a 50/50 chance the AI will hit 
+        if(self.hand_value == 16):
+            risk = random.randint(0, 1)
+            print(f'{self._name} hits -> total value: {self.hand_value}')
+
+            if (risk == 1):
+                self.hit(d)
